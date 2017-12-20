@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //
 //        locationManager.startRangingBeacons(in: region)
 //        locationManager.startRangingBeacons(in: region2)
-//        locationManager.startRangingBeacons(in: region3))
+//        locationManager.startRangingBeacons(in: region3)))
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region.identifier == "brognart" {
+            let y = "test"
             let region = CLBeaconRegion(proximityUUID: UUID(uuidString:"f7826da6-4fa2-4e98-8024-bc5b71e0893e")!, identifier: "uBeacon")
             let region2 = CLBeaconRegion(proximityUUID: UUID(uuidString:"e16e8a8e-34ec-4326-b21e-9b35f22f405b")!, identifier: "uBeacon2")
             let region3 = CLBeaconRegion(proximityUUID: UUID(uuidString:"f2a74fc4-7625-44db-9b08-cb7e130b2029")!, identifier: "uBeacon3")
