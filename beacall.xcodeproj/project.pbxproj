@@ -13,6 +13,7 @@
 		2E0E18A51FEA7545006254E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E0E18A41FEA7545006254E3 /* Assets.xcassets */; };
 		2E0E18A81FEA7545006254E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E0E18A61FEA7545006254E3 /* LaunchScreen.storyboard */; };
 		2E0E18B31FEA7545006254E3 /* beacallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E18B21FEA7545006254E3 /* beacallTests.swift */; };
+		2E0E18BF1FEA7AA7006254E3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E0E18BE1FEA7AA7006254E3 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 		2E0E18AE1FEA7545006254E3 /* beacallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beacallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E0E18B21FEA7545006254E3 /* beacallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beacallTests.swift; sourceTree = "<group>"; };
 		2E0E18B41FEA7545006254E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E0E18BE1FEA7AA7006254E3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2E0E18C01FEA7AAB006254E3 /* beacall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beacall.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0E18BF1FEA7AA7006254E3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +66,7 @@
 				2E0E189C1FEA7545006254E3 /* beacall */,
 				2E0E18B11FEA7545006254E3 /* beacallTests */,
 				2E0E189B1FEA7545006254E3 /* Products */,
+				2E0E18BD1FEA7AA7006254E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +82,7 @@
 		2E0E189C1FEA7545006254E3 /* beacall */ = {
 			isa = PBXGroup;
 			children = (
+				2E0E18C01FEA7AAB006254E3 /* beacall.entitlements */,
 				2E0E189D1FEA7545006254E3 /* AppDelegate.swift */,
 				2E0E189F1FEA7545006254E3 /* ViewController.swift */,
 				2E0E18A11FEA7545006254E3 /* Main.storyboard */,
@@ -94,6 +100,14 @@
 				2E0E18B41FEA7545006254E3 /* Info.plist */,
 			);
 			path = beacallTests;
+			sourceTree = "<group>";
+		};
+		2E0E18BD1FEA7AA7006254E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E0E18BE1FEA7AA7006254E3 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +161,17 @@
 					2E0E18991FEA7545006254E3 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2E0E18AD1FEA7545006254E3 = {
 						CreatedOnToolsVersion = 9.2;
