@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //
 //        locationManager.startRangingBeacons(in: region)
 //        locationManager.startRangingBeacons(in: region2)
-//        locationManager.startRangingBeacons(in: region3)
+//        locationManager.startRangingBeacons(in: region3))
     }
     
     override func didReceiveMemoryWarning() {
