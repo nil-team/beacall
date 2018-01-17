@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Beacall</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -35,6 +37,14 @@
 	<array>
 		<string>MKDirectionsModeOther</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Hello</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Hello</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Hello</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Hello</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
@@ -62,13 +72,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Hello</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Hello</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Hello</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Hello</string>
 </dict>
 </plist>
