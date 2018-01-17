@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ThirdViewController: UIViewController {
     
 }

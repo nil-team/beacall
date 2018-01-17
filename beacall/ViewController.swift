@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import QuartzCore
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -23,22 +24,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+        mapView?.showsUserLocation = true
 
-        mapView.showsCompass = true
-        mapView.showsScale = true
+        mapView?.showsCompass = true
+        mapView?.showsScale = true
         
         let eemi = Annotation(title: "Ecole Européenne des Métiers de l'Internet",
                        locationName: "EEMI",
                        discipline: "School",
                        coordinate: CLLocationCoordinate2D(latitude: 48.8688356, longitude: 2.3414426))
-        mapView.addAnnotation(eemi)
+        mapView?.addAnnotation(eemi)
         
         let panos = Annotation(title: "Panoramas",
                         locationName: "Les Panoramas",
                         discipline: "Hub",
                         coordinate: CLLocationCoordinate2D(latitude: 48.870537, longitude: 2.342358))
-        mapView.addAnnotation(panos)
+        mapView?.addAnnotation(panos)
         
     }
     
@@ -61,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
         
         
-        mapView.setRegion(region, animated: true)
+        mapView?.setRegion(region, animated: true)
         
         
     }
