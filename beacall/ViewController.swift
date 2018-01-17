@@ -20,56 +20,64 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView?.showsUserLocation = true
-
-        mapView?.showsCompass = true
-        mapView?.showsScale = true
         
-        let eemi = Annotation(title: "Ecole Européenne des Métiers de l'Internet",
-                       locationName: "EEMI",
-                       discipline: "School",
-                       coordinate: CLLocationCoordinate2D(latitude: 48.8688356, longitude: 2.3414426))
-        mapView?.addAnnotation(eemi)
+        let brognart = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 48.869404, longitude: 2.341428), radius: 10, identifier: "brognart")
         
-        let panos = Annotation(title: "Panoramas",
-                        locationName: "Les Panoramas",
-                        discipline: "Hub",
-                        coordinate: CLLocationCoordinate2D(latitude: 48.870537, longitude: 2.342358))
-        mapView?.addAnnotation(panos)
+        locationManager.startMonitoring(for: brognart)
         
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+                let region = CLBeaconRegion(proximityUUID: UUID(uuidString:"f7826da6-4fa2-4e98-8024-bc5b71e0893e")!, identifier: "uBeacon")
+                let region2 = CLBeaconRegion(proximityUUID: UUID(uuidString:"e16e8a8e-34ec-4326-b21e-9b35f22f405b")!, identifier: "uBeacon2")
+                let region3 = CLBeaconRegion(proximityUUID: UUID(uuidString:"f2a74fc4-7625-44db-9b08-cb7e130b2029")!, identifier: "uBeacon3")
         
-        
-        let location:CLLocation = locations[0]
-        
-        let latitudeUtilisateur = location.coordinate.latitude
-        let longitudeUtilisateur = location.coordinate.longitude
-        
-        let latDelta:CLLocationDegrees = 0.01
-        let lngDelta:CLLocationDegrees = 0.01
-        
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lngDelta)
-        
-        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitudeUtilisateur, longitudeUtilisateur)
-        
-        
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
-        
-        
-        mapView?.setRegion(region, animated: true)
-        
+                locationManager.startRangingBeacons(in: region)
+                locationManager.startRangingBeacons(in: region2)
+                locationManager.startRangingBeacons(in: region3)
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region.identifier == "brognart" {
+            let region = CLBeaconRegion(proximityUUID: UUID(uuidString:"f7826da6-4fa2-4e98-8024-bc5b71e0893e")!, identifier: "uBeacon")
+            let region2 = CLBeaconRegion(proximityUUID: UUID(uuidString:"e16e8a8e-34ec-4326-b21e-9b35f22f405b")!, identifier: "uBeacon2")
+            let region3 = CLBeaconRegion(proximityUUID: UUID(uuidString:"f2a74fc4-7625-44db-9b08-cb7e130b2029")!, identifier: "uBeacon3")
+            
+            locationManager.startMonitoring(for: region)
+            locationManager.startMonitoring(for: region2)
+            locationManager.startMonitoring(for: region3)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region.identifier == "brognart" {
+            for ranging in locationManager.rangedRegions {
+                if let beacon = ranging as? CLBeaconRegion {
+                    locationManager.stopRangingBeacons(in: beacon)
+                }
+            }
+        }
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        for b in beacons {
+            // Checker if user.cours.time = place.cours.time
+            var prox = "Unknown"
+            switch b.proximity {
+            case .near:
+                prox = "We are close by"
+            case .immediate:
+                prox = "We are close by"
+            default:
+                prox = "We are not close"
+            }
+            print("Beacon \(b.minor) : \(prox)")
+        }
     }
     
 }
